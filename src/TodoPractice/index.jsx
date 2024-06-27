@@ -139,9 +139,14 @@ const TodoPracticeFooter = ({items}) => {
     if(!items.length) return (
         <p className="todo-footer">Start adding items to your travel list</p>
     )
+
+    const numItems = items.length
+    const itemsPakced = items.filter((item) => item.packed).length
+    const percentage = Math.round((itemsPakced / items.length) * 100)
+
   return (
     <div className="todo-footer">
-      <p>Footer</p>
+      <p>{percentage === 100 ? "You got everything! ready to go 🚀" : `💼 You have ${numItems} itmes in your packing list and you already packed ${itemsPakced} items, (${percentage})%`}</p>
     </div>
   );
 };
